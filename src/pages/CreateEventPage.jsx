@@ -46,14 +46,16 @@ export default function CreateEventPage() {
 
   const styles = {
     container: { maxWidth: '600px', margin: '0 auto' },
-    title: { fontSize: '2rem', fontWeight: 'bold', color: '#111827', marginBottom: '1.5rem' },
-    formCard: { backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)' },
+    // Заголовок теперь белый
+    title: { fontSize: '2rem', fontWeight: 'bold', color: '#ffffff', marginBottom: '1.5rem', textAlign: 'center' },
+    // Форма белая, но с легкой тенью, чтобы выделялась
+    formCard: { backgroundColor: '#ffffff', border: '1px solid #e5e7eb', borderRadius: '16px', padding: '2rem', boxShadow: '0 20px 40px -10px rgba(0,0,0,0.5)' },
     formGroup: { display: 'flex', flexDirection: 'column', gap: '0.25rem', marginBottom: '1rem' },
     label: { fontSize: '0.875rem', fontWeight: '500', color: '#111827' },
-    input: { width: '100%', padding: '0.625rem 0.75rem', border: '1px solid #e5e7eb', borderRadius: '8px', fontSize: '1rem', fontFamily: 'inherit' },
+    input: { width: '100%', padding: '0.625rem 0.75rem', border: '1px solid #e5e7eb', borderRadius: '8px', fontSize: '1rem', fontFamily: 'inherit', backgroundColor: '#f9fafb' },
     inputError: { borderColor: '#ef4444' },
     errorText: { color: '#ef4444', fontSize: '0.75rem' },
-    btnPrimary: { backgroundColor: '#4f46e5', color: 'white', padding: '0.5rem 1rem', borderRadius: '8px', fontWeight: '500', border: 'none', cursor: 'pointer', width: '100%', marginTop: '1rem', fontSize: '1rem' },
+    btnPrimary: { backgroundColor: '#4f46e5', color: 'white', padding: '0.8rem 1rem', borderRadius: '8px', fontWeight: '600', border: 'none', cursor: 'pointer', width: '100%', marginTop: '1rem', fontSize: '1rem', transition: 'background-color 0.2s' },
   };
 
   return (
@@ -125,7 +127,12 @@ export default function CreateEventPage() {
           />
         </div>
 
-        <button type="submit" style={styles.btnPrimary} onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#4338ca'} onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#4f46e5'}>
+        <button 
+          type="submit" 
+          style={styles.btnPrimary} 
+          onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#4338ca'} 
+          onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#4f46e5'}
+        >
           Створити подію
         </button>
       </form>

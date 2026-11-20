@@ -14,8 +14,8 @@ describe('HomePage', () => {
         </MemoryRouter>
       </EventProvider>
     );
-    // Ищем текст "Керуйте подіями легко", который мы добавили в баннер
-    expect(screen.getByText(/Керуйте подіями легко/i)).toBeInTheDocument();
+    // Ищем новый текст заголовка, который мы поставили в дизайне
+    expect(screen.getByText(/Створюйте події,/i)).toBeInTheDocument();
   });
 });
 
@@ -28,7 +28,7 @@ describe('Layout', () => {
         </MemoryRouter>
       </EventProvider>
     );
-    // Проверяем, что в шапке есть ссылки
+    // Проверяем ссылки в шапке
     expect(screen.getByText(/Головна/i)).toBeInTheDocument();
     expect(screen.getByText(/Події/i)).toBeInTheDocument();
     expect(screen.getByText(/Створити/i)).toBeInTheDocument();

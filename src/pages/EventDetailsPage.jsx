@@ -11,8 +11,8 @@ export default function EventDetailsPage() {
   if (!event) {
     return (
       <div style={{ textAlign: 'center', marginTop: '50px' }}>
-        <h2>Подію не знайдено</h2>
-        <Link to="/events" style={{ color: '#4f46e5', marginTop: '1rem', display: 'inline-block' }}>Повернутися до списку</Link>
+        <h2 style={{ color: '#ffffff' }}>Подію не знайдено</h2>
+        <Link to="/events" style={{ color: '#818cf8', marginTop: '1rem', display: 'inline-block' }}>Повернутися до списку</Link>
       </div>
     );
   }
@@ -29,21 +29,26 @@ export default function EventDetailsPage() {
 
   const styles = {
     container: { maxWidth: '700px', margin: '0 auto' },
-    btnOutline: { backgroundColor: 'transparent', border: '1px solid #e5e7eb', color: '#111827', padding: '0.5rem 1rem', borderRadius: '8px', cursor: 'pointer', marginBottom: '1.5rem', fontSize: '0.95rem' },
-    card: { backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem', boxShadow: '0 1px 2px 0 rgba(0,0,0,0.05)' },
-    badge: { fontSize: '0.75rem', backgroundColor: '#e0e7ff', color: '#3730a3', padding: '0.2rem 0.6rem', borderRadius: '12px', fontWeight: '500' },
-    title: { fontSize: '2rem', fontWeight: 'bold', marginTop: '0.5rem', marginBottom: '1.5rem', color: '#111827' },
-    infoRow: { display: 'flex', gap: '2rem', marginBottom: '1.5rem', color: '#111827' },
-    hr: { border: 'none', borderTop: '1px solid #e5e7eb', margin: '1.5rem 0' },
-    sectionTitle: { fontSize: '1.25rem', fontWeight: '600', marginBottom: '0.5rem', color: '#111827' },
-    description: { whiteSpace: 'pre-wrap', color: '#6b7280', lineHeight: '1.7', marginBottom: '2rem' },
-    footerRow: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1.5rem', borderTop: '1px solid #e5e7eb' },
-    btnSuccess: { backgroundColor: '#10b981', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '8px', border: 'none', cursor: 'pointer', fontSize: '1rem', fontWeight: '500' },
+    btnOutline: { backgroundColor: 'transparent', border: '1px solid #334155', color: '#e2e8f0', padding: '0.5rem 1rem', borderRadius: '8px', cursor: 'pointer', marginBottom: '1.5rem', fontSize: '0.95rem', transition: 'background-color 0.2s' },
+    card: { backgroundColor: 'rgba(30, 41, 59, 0.8)', border: '1px solid #334155', borderRadius: '16px', padding: '2.5rem', boxShadow: '0 20px 40px -10px rgba(0,0,0,0.5)' },
+    badge: { fontSize: '0.75rem', backgroundColor: 'rgba(129, 140, 248, 0.1)', color: '#818cf8', padding: '0.25rem 0.75rem', borderRadius: '100px', fontWeight: '600' },
+    title: { fontSize: '2.5rem', fontWeight: '800', marginTop: '1rem', marginBottom: '1.5rem', color: '#ffffff', lineHeight: '1.2' },
+    infoRow: { display: 'flex', gap: '2rem', marginBottom: '1.5rem', color: '#e2e8f0', fontSize: '1.1rem' },
+    hr: { border: 'none', borderTop: '1px solid #334155', margin: '2rem 0' },
+    sectionTitle: { fontSize: '1.25rem', fontWeight: '600', marginBottom: '1rem', color: '#ffffff' },
+    description: { whiteSpace: 'pre-wrap', color: '#94a3b8', lineHeight: '1.8', marginBottom: '2rem', fontSize: '1.05rem' },
+    footerRow: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '2rem', borderTop: '1px solid #334155' },
+    btnSuccess: { backgroundColor: '#10b981', color: 'white', padding: '0.8rem 1.5rem', borderRadius: '8px', border: 'none', cursor: 'pointer', fontSize: '1rem', fontWeight: '600', transition: 'background-color 0.2s' },
   };
 
   return (
     <div style={styles.container}>
-      <button onClick={() => navigate(-1)} style={styles.btnOutline}>
+      <button 
+        onClick={() => navigate(-1)} 
+        style={styles.btnOutline}
+        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'}
+        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+      >
         ← Назад
       </button>
 
@@ -64,14 +69,19 @@ export default function EventDetailsPage() {
         </p>
 
         <div style={styles.footerRow}>
-          <div style={{ fontSize: '1.125rem', color: '#111827' }}>
+          <div style={{ fontSize: '1.125rem', color: '#ffffff' }}>
             <strong>Учасників:</strong> {event.participantsCount || 0}
           </div>
 
           {event.isRegistered ? (
-            <span style={{ color: '#10b981', fontWeight: '600' }}>✅ Ви вже записані</span>
+            <span style={{ color: '#10b981', fontWeight: '600', fontSize: '1.1rem' }}>✅ Ви вже записані</span>
           ) : (
-            <button onClick={handleRegister} style={styles.btnSuccess} onMouseOver={(e) => e.currentTarget.style.filter = 'brightness(0.9)'} onMouseOut={(e) => e.currentTarget.style.filter = 'none'}>
+            <button 
+              onClick={handleRegister} 
+              style={styles.btnSuccess}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#059669'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#10b981'}
+            >
               Записатися
             </button>
           )}
